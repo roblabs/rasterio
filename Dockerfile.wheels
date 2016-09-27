@@ -44,7 +44,7 @@ RUN mkdir -p /src \
 # gdal
 RUN mkdir -p /src \
     && cd /src \
-    && curl -f -L -O http://download.osgeo.org/gdal/2.1.0/gdal-2.1.1.tar.gz \
+    && curl -f -L -O http://download.osgeo.org/gdal/2.1.1/gdal-2.1.1.tar.gz \
     && tar xzf gdal-2.1.1.tar.gz \
     && cd /src/gdal-2.1.1 \
     && ./configure \
@@ -76,7 +76,8 @@ RUN mkdir -p /src \
         --with-curl=curl-config \
         --without-python \
     && make \
-    && make install
+    && make install \
+    && rm -rf /src
 
 # Bake dev requirements into the Docker image for faster builds
 ADD requirements-dev.txt /tmp/requirements-dev.txt

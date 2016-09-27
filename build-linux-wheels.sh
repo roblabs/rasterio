@@ -8,6 +8,7 @@ UNREPAIRED_WHEELS=/tmp/wheels
 for PYBIN in /opt/python/*/bin; do
     if [[ $PYBIN == *"26"* ]]; then continue; fi
     export PATH=${PYBIN}:$ORIGINAL_PATH
+    rm -rf build
     PACKAGE_DATA=1 python setup.py bdist_wheel -d ${UNREPAIRED_WHEELS}
 done
 
